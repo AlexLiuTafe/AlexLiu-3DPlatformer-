@@ -7,8 +7,10 @@ public class OnEmpty : MonoBehaviour
 	public float distance = 1f;
 	public float speed =0.01f;
 	Vector3 endPos;
+	bool isOpen;
 	private void Start()
 	{
+		isOpen = false;
 		endPos = door.position + Vector3.right * distance;
 	}
 	void Update()
@@ -16,7 +18,9 @@ public class OnEmpty : MonoBehaviour
 		//Check if there are no more children left
 		if (transform.childCount == 0)
 		{
+			
 			OpenDoor();
+			isOpen = true;
 		}
 	}
 	//MY OWN SLIDING DOOR FUNCTION! YAY!

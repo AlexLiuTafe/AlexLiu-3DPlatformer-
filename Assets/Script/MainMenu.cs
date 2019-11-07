@@ -6,10 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
+	Scene currentScene;
+	private void Start()
+	{
+		currentScene = SceneManager.GetActiveScene();
+	}
 	private void Update()
 	{
-		if(Input.anyKeyDown)
+		if (currentScene.buildIndex == 4 && Input.GetButtonDown("Jump"))
+		{
+			SceneManager.LoadScene(0);
+		}
+		else if(Input.anyKeyDown)
 		{
 			NextScene();
 		}
@@ -17,7 +25,7 @@ public class MainMenu : MonoBehaviour
 	public void NextScene()
 	{
 		//Get the current scene
-		Scene currentScene = SceneManager.GetActiveScene();
+		currentScene = SceneManager.GetActiveScene();
 		//Load the next scene aftercrurent scene
 		SceneManager.LoadScene(currentScene.buildIndex + 1);
 	}
